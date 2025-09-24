@@ -78,12 +78,12 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
     <tr>
       <td align="center" style="padding:12px;">
         <strong>Occlusion Sensitivity</strong><br>
-        <img src="advance_visualization/samples/oclusion v2.png" alt="Occlusion Sensitivity" width="360"><br>
+        <img src="advance_visualization/samples/oclusion v2.png" alt="Occlusion Sensitivity" width="290"><br>
         <sub>Importancia local al ocultar parches.</sub>
       </td>
       <td align="center" style="padding:12px;">
         <strong>Integrated Gradients (overlay)</strong><br>
-        <img src="advance_visualization/samples/Integrated Gradients.png" alt="Integrated Gradients overlay" width="360"><br>
+        <img src="advance_visualization/samples/Integrated Gradients.png" alt="Integrated Gradients overlay" width="290"><br>
         <sub>Atribuciones acumuladas superpuestas.</sub>
       </td>
     </tr>
