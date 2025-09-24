@@ -1,5 +1,15 @@
 # 🐾 ResNet-101: Clasificación de Gato vs Perro con Interpretabilidad
 
+
+![Repo size](https://img.shields.io/github/repo-size/SPMINE-2425/proyecto-final-reyes-castano)
+![Last commit](https://img.shields.io/github/last-commit/SPMINE-2425/proyecto-final-reyes-castano)
+![Open issues](https://img.shields.io/github/issues/SPMINE-2425/proyecto-final-reyes-castano)
+![Contributors](https://img.shields.io/github/contributors/SPMINE-2425/proyecto-final-reyes-castano)
+![Forks](https://img.shields.io/github/forks/SPMINE-2425/proyecto-final-reyes-castano?style=social)
+![Stars](https://img.shields.io/github/stars/SPMINE-2425/proyecto-final-reyes-castano?style=social)
+
+
+
 Repositorio de una aplicación completa (API + App) que implementa **ResNet-101** en PyTorch para clasificar imágenes de **gatos** y **perros**, e incorpora un módulo de **interpretabilidad** para entender “qué ve” la red en cada predicción. El foco es proporcionar una herramienta avanzada de clasificacion y entendimiento con codigo altamente reproducible: código modular, configuración por YAML y utilidades de evaluación/visualización.
 
 ---
