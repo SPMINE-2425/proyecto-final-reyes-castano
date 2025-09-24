@@ -108,6 +108,59 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 
 ---
 
+## 🔧 Instalación (con Poetry)
+
+> Requisitos: **Python 3.10+**, **Git**, **Poetry**.
+
+1) Clona el repositorio y entra a la carpeta del proyecto:
+
+```bash
+git clone <URL_DEL_REPO>
+cd <CARPETA_DEL_PROYECTO>
+```
+
+### 🧩 Configuración rápida
+
+**Pesos del modelo**  
+2) Coloca el archivo de pesos (por ejemplo `ResNet101.pth`) en: **`resnet101/model_trained`**
+
+
+**Variable de entorno para la App (opcional)**  
+La app de Streamlit puede apuntar a una API distinta vía `API_BASE_URL`:
+
+```powershell
+$env:API_BASE_URL="http://127.0.0.1:8000"
+```
+
+### 🚀 Ejecución (dos consolas)
+
+3) Abre **dos** terminales en la **raíz del proyecto**.
+
+**Consola 1 — API (FastAPI/Uvicorn)**
+
+```bash
+poetry run uvicorn src.api.main:app --reload
+```
+**Consola 2 — App (Streamlit)**
+
+```bash
+poetry run streamlit run app/app.py
+```
+
+- App (UI): Streamlit te mostrará la URL local (generalmente `http://localhost:8501`).
+
+
+### 🛠️ Problemas comunes
+
+- **Pesos no encontrados**: verifica la ruta `resnet101/model_trained/ResNet101.pth`.
+- **CORS / conexión App–API**: confirma `API_BASE_URL` y que Uvicorn está en `127.0.0.1:8000`.
+- **Dependencias**: vuelve a instalar con `poetry install` o actualiza con `poetry update`.
+
+
+
+
+---
+
 ## 🗺️ Rutas expuestas (API)
 
 - `GET /health` → Estado del servicio.
