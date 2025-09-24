@@ -47,7 +47,7 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 **Vista general de la App (Home / Subida de imagen):**  
 
 <div align="center">
-  <img src="app/showcase/Showcase app.png" alt="showcase app" width="720">
+  <img src="app/showcase/Showcase app.png" alt="showcase app" width="620">
 </div>
 
 ---
