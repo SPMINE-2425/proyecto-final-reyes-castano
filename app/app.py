@@ -2,10 +2,10 @@ import io
 import json
 import os
 from typing import Dict, Any, Optional, List
-
 import requests
 import streamlit as st
 from PIL import Image
+
 
 # ----------------------------------
 # Configuración de cliente
@@ -13,8 +13,8 @@ from PIL import Image
 API_BASE = os.environ.get("API_BASE_URL", "http://127.0.0.1:8000")
 PREDICT_URL = f"{API_BASE}/predict"
 ADVANCED_URL = f"{API_BASE}/predict/advanced"
-REQUEST_TIMEOUT_BASIC = (5, 15)    
-REQUEST_TIMEOUT_ADV = (5, 150)      
+REQUEST_TIMEOUT_BASIC = (5, 25)    
+REQUEST_TIMEOUT_ADV = (5, 250)      
 
 st.set_page_config(page_title="Cat vs Dog — CNN Interpretability Demo", page_icon="🐾", layout="centered")
 
@@ -52,7 +52,6 @@ with col1:
 with col2:
     url_input = st.text_input("...o pega una URL http/https", placeholder="https://...")
 
-# Si se dan ambos, priorizamos archivo
 if uploaded_file and url_input:
     st.info("Usaré **solo** la imagen subida. Borra el archivo si prefieres usar la URL.")
     url_input = ""
@@ -73,8 +72,7 @@ with left:
 with right:
     toggle_adv = st.button(
         ("🧠 Análisis avanzado" if not st.session_state.show_adv else "🧠 Ocultar análisis avanzado"),
-        width="stretch"
-    )
+        width="stretch")
     if toggle_adv:
         st.session_state.show_adv = not st.session_state.show_adv
 
@@ -139,7 +137,6 @@ def call_api_advanced(file, url: str, what: List[str]) -> Dict[str, Any]:
     else:
         raise RuntimeError("Falta archivo o URL.")
 
-    # Param 'what': "all" o lista separada por comas
     data["what"] = "all" if len(what) == 0 else ",".join(what)
 
     resp = requests.post(ADVANCED_URL, files=files, data=data, timeout=timeout)
@@ -193,7 +190,6 @@ if infer_basic:
             st.error(f"Error inesperado: {e}")
             st.stop()
 
-    # Render resultado básico
     st.subheader("Resultado")
     label = result.get("label", "?")
     scores = result.get("scores", {})
@@ -217,8 +213,7 @@ if infer_advanced:
         try:
             result_adv = call_api_advanced(
                 uploaded_file if uploaded_file else None,
-                "" if uploaded_file else url_input,
-                adv_selected)
+                "" if uploaded_file else url_input,adv_selected)
             
             preview = _load_pil_from_upload(uploaded_file) if uploaded_file else _load_pil_from_url(url_input)
         except requests.exceptions.Timeout:
@@ -234,7 +229,6 @@ if infer_advanced:
             st.error(f"Error inesperado: {e}")
             st.stop()
 
-    # --- Resultado base ---
     st.subheader("Resultado (Avanzado)")
     label = result_adv.get("label", "?")
     scores = result_adv.get("scores", {})
@@ -253,7 +247,6 @@ if infer_advanced:
     st.markdown("---")
     st.header("Interpretabilidad de la CNN")
 
-    # Explicaciones (lenguaje simple)
     EXPLAIN = {
         "kernels": (
             "Los **kernels** son filtros que aprende la red para detectar patrones simples como bordes o líneas. "
