@@ -1,6 +1,6 @@
 # 🐾 ResNet-101: Clasificación de Gato vs Perro con Interpretabilidad
 
-Repositorio de una aplicación completa (API + App) que implementa **ResNet-101** en PyTorch para clasificar imágenes de **gatos** y **perros**, e incorpora un módulo de **interpretabilidad** para entender “qué ve” la red en cada predicción. El foco es educativo y reproducible: código modular, configuración por YAML y utilidades de evaluación/visualización.
+Repositorio de una aplicación completa (API + App) que implementa **ResNet-101** en PyTorch para clasificar imágenes de **gatos** y **perros**, e incorpora un módulo de **interpretabilidad** para entender “qué ve” la red en cada predicción. El foco es proporcionar una herramienta avanzada de clasificacion y entendimiento con codigo altamente reproducible: código modular, configuración por YAML y utilidades de evaluación/visualización.
 
 ---
 
@@ -19,22 +19,56 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 ## 🖼️ Showcase 
 
 **Vista general de la App (Home / Subida de imagen):**  
-[ESPACIO RESERVADO PARA IMAGEN/GIF]
 
-**Predicción básica (Etiqueta + Scores):**  
-[ESPACIO RESERVADO PARA IMAGEN/GIF]
+<div align="center">
+  <img src="app/showcase/Showcase app.png" alt="showcase app" width="720">
+</div>
 
-**Predicción avanzada (Interpretabilidad por método):**  
-- Grad-CAM  
-  [ESPACIO RESERVADO PARA IMAGEN/GIF]
-- Integrated Gradients (overlay)  
-  [ESPACIO RESERVADO PARA IMAGEN/GIF]
-- Occlusion Sensitivity  
-  [ESPACIO RESERVADO PARA IMAGEN/GIF]
-- Feature Maps (profundidad/capas)  
-  [ESPACIO RESERVADO PARA IMAGEN/GIF]
-- Kernels (filtros aprendidos)  
-  [ESPACIO RESERVADO PARA IMAGEN/GIF]
+---
+
+**Predicción avanzada (Interpretabilidad por método):**
+
+<!-- 1) Grad-CAM centrado solo -->
+<div align="center">
+  <strong>Grad-CAM</strong><br>
+  <img src="advance_visualization/samples/Grad Cam.png" alt="Grad-CAM" width="620"><br>
+  <sub>Mapa de calor clase-específico.</sub>
+</div>
+
+---
+
+<!-- 2) Fila: Occlusion | Integrated, ambos centrados -->
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" style="padding:12px;">
+        <strong>Occlusion Sensitivity</strong><br>
+        <img src="advance_visualization/samples/oclusion v2.png" alt="Occlusion Sensitivity" width="360"><br>
+        <sub>Importancia local al ocultar parches.</sub>
+      </td>
+      <td align="center" style="padding:12px;">
+        <strong>Integrated Gradients (overlay)</strong><br>
+        <img src="advance_visualization/samples/Integrated Gradients.png" alt="Integrated Gradients overlay" width="360"><br>
+        <sub>Atribuciones acumuladas superpuestas.</sub>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+<!-- 3) Feature Maps centrado -->
+<div align="center">
+  <strong>Feature Maps (profundidad/capas)</strong><br>
+  <img src="advance_visualization/samples/Feature Maps.png" alt="Feature Maps" width="620"><br>
+</div>
+
+<!-- 4) Kernels centrado -->
+<div align="center" style="padding-top:8px;">
+  <strong>Kernels (filtros aprendidos)</strong><br>
+  <img src="advance_visualization/samples/Filters.png" alt="Kernels aprendidos" width="620"><br>
+  <sub>Filtros de capas tempranas (bordes, texturas, orientaciones).</sub>
+</div>
 
 ---
 
