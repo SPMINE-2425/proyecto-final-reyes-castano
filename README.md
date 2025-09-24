@@ -20,7 +20,7 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 
 - **`resnet101/`**: implementación del modelo (desde cero) y artefactos de experimentos.
   - `src/` – arquitectura, bloques residuales, utilidades de guardado.
-  - `model_trained/` – pesos entrenados (gestión recomendada vía Git LFS o enlace externo).
+  - `model_trained/` – pesos entrenados.
   - `experiments/` – resultados y paneles generados.
 
 - **`src/`**: API de inferencia (FastAPI) y utilidades.
