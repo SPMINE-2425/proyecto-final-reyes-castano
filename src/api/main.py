@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.api.deps import load_resources
 from src.api.routers.health import router as health_router
 from src.api.routers.predict import router as predict_router
-
+from src.api.errors import register_exception_handlers
 
 tags_metadata = [
     {
@@ -60,7 +60,8 @@ def create_app() -> FastAPI:
         license_info={"name": "MIT", "url": "https://opensource.org/licenses/MIT"},
         docs_url="/docs",
         redoc_url="/redoc")
-
+    
+    register_exception_handlers(app)
 
     allowed_origins = [
         "http://localhost:8501", "http://127.0.0.1:8501",

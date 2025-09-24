@@ -152,7 +152,6 @@ async def predict_advanced(
     model = get_model()
     id_to_label = get_id_to_label()
 
-    # --- predicción como en /predict ---
     t0 = time.perf_counter()
     with torch.no_grad():
         logits = model(x)
@@ -162,13 +161,12 @@ async def predict_advanced(
     scores: Dict[str, float] = {id_to_label.get(i, str(i)): float(p) for i, p in enumerate(probs)}
     label = max(scores.items(), key=lambda kv: kv[1])[0]
 
-    # --- qué generar ---
     requested: List[str] = (
         ["kernels", "feature_maps", "gradcam", "integrated_gradients", "occlusion"]
         if what.strip().lower() == "all"
         else [w.strip().lower() for w in what.split(",") if w.strip()])
 
-    artifacts: Dict[str, str] = {}  # nombre -> dataurl png
+    artifacts: Dict[str, str] = {} 
 
     if "kernels" in requested:
         try:
