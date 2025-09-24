@@ -40,6 +40,15 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 
 - **`oxford_pets_binary_resnet101.yaml`**: configuración del experimento (datos, modelo, optimizador, scheduler, device).
 
+
+---
+
+## 🔐 Pesos y datos
+
+- Los **pesos del modelo** deben descargarse en (...) y ser colocados en la siguiente ruta 
+- Los **datos** deben respetar sus licencias; este proyecto usa **Oxford-IIIT Pet** con fines educativos.
+
+
 ---
 
 ## 🖼️ Showcase 
@@ -99,6 +108,15 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 
 ---
 
+## 🗺️ Rutas expuestas (API)
+
+- `GET /health` → Estado del servicio.
+- `POST /predict` → Predicción base: `label`, `scores`, `meta`.
+- `POST /predict/advanced` → Predicción + `artifacts` de interpretabilidad.
+
+
+---
+
 ## 🔍 Flujo de inferencia
 
 1. **Entrada**: archivo o URL → validación (MIME/shape).
@@ -115,41 +133,86 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 
 ---
 
-## 🧠 Interpretabilidad (resumen conceptual)
-
-- **Grad-CAM**: resalta zonas espacialmente relevantes para la clase objetivo a partir de gradientes de capas profundas.
-- **Integrated Gradients**: atribuye importancia a cada píxel integrando el gradiente a lo largo de un camino desde una referencia (baseline) hasta la imagen.
-- **Occlusion Sensitivity**: mide cómo cambia la confianza al “ocultar” parches de la imagen (búsqueda local de relevancia).
-- **Feature Maps**: muestran qué patrones intermedios activan las capas (texturas, bordes, partes).
-- **Kernels**: visualiza filtros aprendidos en convoluciones (especialmente capas tempranas).
-
----
-
 ## 📊 Métricas de referencia (validación)
 
-- Pérdida (Val Loss)
-- ROC-AUC
-- Reporte de clasificación (Precisión/Recall/F1 por clase)
-- Matriz de confusión
+<div align="center">
 
-[ESPACIO RESERVADO PARA TABLA/FIGURA DE MÉTRICAS]
+<p><em>Resumen</em></p>
 
----
+<table>
+  <thead>
+    <tr>
+      <th>Métrica</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Val Loss</td>
+      <td><strong>0.4084</strong></td>
+    </tr>
+    <tr>
+      <td>ROC-AUC</td>
+      <td><strong>0.9108</strong></td>
+    </tr>
+  </tbody>
+</table>
 
-## 🔐 Pesos y datos
+<br/>
 
-- Los **pesos del modelo** pueden distribuirse por **Git LFS** o alojarse externamente (HuggingFace/Drive) y enlazarse en el README.
-- Los **datos** deben respetar sus licencias; este proyecto usa **Oxford-IIIT Pet** con fines educativos.
+<p><em>Reporte de clasificación</em></p>
 
----
+<table>
+  <thead>
+    <tr>
+      <th>Clase</th>
+      <th>Precisión</th>
+      <th>Recall</th>
+      <th>F1-Score</th>
+      <th>Soporte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0 (gato)</td>
+      <td>0.6840</td>
+      <td>0.8750</td>
+      <td>0.7678</td>
+      <td>240</td>
+    </tr>
+    <tr>
+      <td>1 (perro)</td>
+      <td>0.9301</td>
+      <td>0.8044</td>
+      <td>0.8627</td>
+      <td>496</td>
+    </tr>
+    <tr>
+      <td><strong>Exactitud</strong></td>
+      <td></td>
+      <td></td>
+      <td><strong>0.8274</strong></td>
+      <td>736</td>
+    </tr>
+    <tr>
+      <td><strong>Macro Avg</strong></td>
+      <td>0.8071</td>
+      <td>0.8397</td>
+      <td>0.8153</td>
+      <td>736</td>
+    </tr>
+    <tr>
+      <td><strong>Ponderado</strong></td>
+      <td>0.8498</td>
+      <td>0.8274</td>
+      <td>0.8318</td>
+      <td>736</td>
+    </tr>
+  </tbody>
+</table>
 
-## 🗺️ Rutas expuestas (API)
+</div>
 
-- `GET /health` → Estado del servicio.
-- `POST /predict` → Predicción base: `label`, `scores`, `meta`.
-- `POST /predict/advanced` → Predicción + `artifacts` de interpretabilidad.
-
-[ESPACIO RESERVADO PARA EJEMPLOS DE REQUEST/RESPONSE]
 
 ---
 
@@ -159,14 +222,6 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 - Estadísticos de normalización cacheados en `data/pet_stats.json`.
 - Semillas y dispositivos controlados (CPU/CUDA).
 
----
-
-## 🧭 Roadmap
-
-- Exportación ONNX/TorchScript.
-- Batch inference por carpeta/URL list.
-- Panel de interpretabilidad adicional (SmoothGrad, Grad-CAM++).  
-- Tests más exhaustivos de contrato y regresión visual.
 
 ---
 
