@@ -122,6 +122,7 @@ cd <CARPETA_DEL_PROYECTO>
 ### 🧩 Configuración rápida
 
 **Pesos del modelo**  
+
 2) Coloca el archivo de pesos (por ejemplo `ResNet101.pth`) en: **`resnet101/model_trained`**
 
 
