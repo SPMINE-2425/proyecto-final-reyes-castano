@@ -16,6 +16,32 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 
 ---
 
+## 🧩 Componentes principales
+
+- **`resnet101/`**: implementación del modelo (desde cero) y artefactos de experimentos.
+  - `src/` – arquitectura, bloques residuales, utilidades de guardado.
+  - `model_trained/` – pesos entrenados (gestión recomendada vía Git LFS o enlace externo).
+  - `experiments/` – resultados y paneles generados.
+
+- **`src/`**: API de inferencia (FastAPI) y utilidades.
+  - `api/` – routers (`/health`, `/predict`, `/predict/advanced`), errores, middleware, deps.
+  - `inference/` – pipeline de preprocesamiento → forward → postprocesado → validación.
+  - `schemas/` – contratos Pydantic v2 para requests/responses (incluye metadatos e imágenes base64).
+  - `utils/` – configuración, lectura de variables de entorno, paths, etc.
+  - `tests/` – pruebas de contrato y validaciones de entrada (pytest).
+
+- **`app/`**: interfaz de usuario (Streamlit) para subir imágenes/URLs y explorar explicaciones.
+
+- **`data/`**: preparación de datos y estadísticas.
+  - `processed/` – carpeta de trabajo (no versionar datos brutos).
+  - `pet_stats.json` – medias/desviaciones para normalización reproducible.
+
+- **`notebooks/`**: verificación de flujo de datos y sanity checks del modelo.
+
+- **`oxford_pets_binary_resnet101.yaml`**: configuración del experimento (datos, modelo, optimizador, scheduler, device).
+
+---
+
 ## 🖼️ Showcase 
 
 **Vista general de la App (Home / Subida de imagen):**  
@@ -70,31 +96,6 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
   <sub>Filtros de capas tempranas (bordes, texturas, orientaciones).</sub>
 </div>
 
----
-
-## 🧩 Componentes principales
-
-- **`resnet101/`**: implementación del modelo (desde cero) y artefactos de experimentos.
-  - `src/` – arquitectura, bloques residuales, utilidades de guardado.
-  - `model_trained/` – pesos entrenados (gestión recomendada vía Git LFS o enlace externo).
-  - `experiments/` – resultados y paneles generados.
-
-- **`src/`**: API de inferencia (FastAPI) y utilidades.
-  - `api/` – routers (`/health`, `/predict`, `/predict/advanced`), errores, middleware, deps.
-  - `inference/` – pipeline de preprocesamiento → forward → postprocesado → validación.
-  - `schemas/` – contratos Pydantic v2 para requests/responses (incluye metadatos e imágenes base64).
-  - `utils/` – configuración, lectura de variables de entorno, paths, etc.
-  - `tests/` – pruebas de contrato y validaciones de entrada (pytest).
-
-- **`app/`**: interfaz de usuario (Streamlit) para subir imágenes/URLs y explorar explicaciones.
-
-- **`data/`**: preparación de datos y estadísticas.
-  - `processed/` – carpeta de trabajo (no versionar datos brutos).
-  - `pet_stats.json` – medias/desviaciones para normalización reproducible.
-
-- **`notebooks/`**: verificación de flujo de datos y sanity checks del modelo.
-
-- **`oxford_pets_binary_resnet101.yaml`**: configuración del experimento (datos, modelo, optimizador, scheduler, device).
 
 ---
 
