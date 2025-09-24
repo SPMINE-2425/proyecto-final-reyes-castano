@@ -16,7 +16,7 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 
 ---
 
-## 🖼️ Showcase (coloca aquí tus capturas/figuras)
+## 🖼️ Showcase 
 
 **Vista general de la App (Home / Subida de imagen):**  
 [ESPACIO RESERVADO PARA IMAGEN/GIF]
