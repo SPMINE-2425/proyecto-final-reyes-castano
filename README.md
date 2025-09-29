@@ -118,47 +118,97 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 
 ---
 
-## 🔧 Instalación (con Poetry)
+## 🔧 Instalación y ejecución
 
-> Requisitos: **Python 3.10+**, **Git**, **Poetry**.
+> Requisitos mínimos: **Python 3.11+** (si vas con Poetry), **Git**.  
+> Alternativa recomendada: **Docker** + **Docker Compose** (no necesitas Python ni Poetry en tu máquina).
 
-1) Clona el repositorio y entra a la carpeta del proyecto:
+### 1) Clonar el repo
 
 ```bash
 git clone <URL_DEL_REPO>
 cd <CARPETA_DEL_PROYECTO>
 ```
 
-### 🧩 Configuración rápida
+### 2) Pesos del modelo
 
-**Pesos del modelo**  
+Coloca el archivo de pesos (ej. `ResNet101.pth`) en: resnet101/model_trained/
 
-2) Coloca el archivo de pesos (por ejemplo `ResNet101.pth`) en: **`resnet101/model_trained`**
+---
 
+## Opción A — Ejecutar con Poetry (local)
 
-**Variable de entorno para la App (opcional)**  
-La app de Streamlit puede apuntar a una API distinta vía `API_BASE_URL`:
+> Útil para desarrollo rápido sin contenedores.
 
-```powershell
-$env:API_BASE_URL="http://127.0.0.1:8000"
-```
-
-### 🚀 Ejecución (dos consolas)
-
-3) Abre **dos** terminales en la **raíz del proyecto**.
-
-**Consola 1 — API (FastAPI/Uvicorn)**
+1) Instala dependencias y activa el venv:
 
 ```bash
-poetry run uvicorn src.api.main:app --reload
+poetry install
 ```
-**Consola 2 — App (Streamlit)**
 
+2) (Opcional) Variable de entorno para que Streamlit consuma otra API:
+
+```bash
+# PowerShell
+$env:API_BASE_URL="http://127.0.0.1:8000"
+
+# Bash
+export API_BASE_URL="http://127.0.0.1:8000"
+```
+
+3) Abre **dos consolas** en la raíz del proyecto:
+
+**Consola 1 — API (FastAPI/Uvicorn)**  
+
+```bash
+poetry run uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+**Consola 2 — UI (Streamlit)**  
 ```bash
 poetry run streamlit run app/app.py
 ```
 
-- App (UI): Streamlit te mostrará la URL local (generalmente `http://localhost:8501`).
+- API docs: http://localhost:8000/docs  
+- UI: http://localhost:8501  
+
+---
+
+## Opción B — Ejecutar con Docker / Docker Compose (recomendado)
+
+> Levanta **API** y **UI** en contenedores separados con un solo comando.
+
+### B.1 Construir la imagen (si aún no existe)
+
+```bash
+docker build -t mi_app:latest_final .
+```
+
+### B.2 Usar `docker-compose.yml`
+
+```bash
+docker compose up -d
+```
+
+- API: http://localhost:8000/docs  
+- UI:  http://localhost:8501  
+
+### B.3 Comandos útiles
+
+```bash
+# Levantar en segundo plano
+docker compose up -d
+
+# Ver logs (API / UI)
+docker compose logs -f api
+docker compose logs -f ui
+
+# Reiniciar tras cambios en código
+docker compose up -d --build
+
+# Apagar y limpiar contenedores
+docker compose down
+```
 
 
 ### 🛠️ Problemas comunes
