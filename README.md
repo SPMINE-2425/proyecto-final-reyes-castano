@@ -55,7 +55,7 @@ Repositorio de una aplicación completa (API + App) que implementa **ResNet-101*
 
 ## 🔐 Pesos y datos
 
-- Los **pesos del modelo** deben descargarse en (...) y ser colocados en la siguiente ruta **`resnet101/model_trained`**
+- Los **pesos del modelo** deben descargarse en [**MODELO**](https://drive.google.com/file/d/1j_MgSHO_bTxhc_Z8Zxt5rJXQJOEIzXuE/view?usp=sharing) y ser colocados en la siguiente ruta **`resnet101/model_trained`**
 - Los **datos** deben respetar sus licencias; este proyecto usa **Oxford-IIIT Pet** con fines educativos.
 
 
