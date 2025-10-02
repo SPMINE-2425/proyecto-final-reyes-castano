@@ -10,11 +10,26 @@
 
 
 
-Repositorio de una aplicación completa (API + App) que implementa **ResNet-101** en PyTorch para clasificar imágenes de **gatos** y **perros**, e incorpora un módulo de **interpretabilidad** para entender “qué ve” la red en cada predicción. El foco es proporcionar una herramienta avanzada de clasificacion y entendimiento con codigo altamente reproducible: código modular, configuración por YAML y utilidades de evaluación/visualización.
+Este proyecto implementa **ResNet-101** para clasificar imágenes de **gatos** y **perros**, con un módulo de **interpretabilidad** (Grad-CAM/LayerCAM) que permite visualizar qué zonas de la imagen influyen en la predicción. Este  proyecto está orientado a un **caso de uso de negocio en el sector veterinario** y a la interpretacion de arquitecturas de redes neuronales densas.
 
 ---
 
-## 🎯 Objetivos
+## 🚩 Problema de negocio
+Las **veterinarias y clínicas de mascotas** reciben diariamente una gran cantidad de imágenes enviadas por clientes (por ejemplo, a través de **WhatsApp Business** o aplicaciones propias). Sin un sistema automatizado:
+- El **equipo administrativo pierde tiempo** revisando y clasificando manualmente las fotos.
+- No existe una **base de datos segmentada** de clientes según especie, lo que limita las campañas de marketing.
+- Los veterinarios **no cuentan con trazabilidad visual** de lo que motivó la consulta inicial.
+
+---
+
+## 🎯 Propuesta de valor
+- **Automatización de la clasificación**: cada foto recibida se etiqueta automáticamente como “gato” o “perro” en segundos.
+- **Segmentación de clientes**: permite construir audiencias (dueños de gatos, dueños de perros, clientes mixtos) para **campañas de fidelización** o **programas de prevención diferenciados**.
+- **Atención más ágil**: la IA filtra y organiza los casos, liberando tiempo del personal para lo realmente importante: la atención veterinaria.
+
+---
+
+## 🔍 Objetivos
 
 - **Clasificación binaria** (cat vs dog) sobre imágenes del usuario (archivo local o URL).
 - **Interpretabilidad avanzada** para inspeccionar la decisión del modelo en cada imagen:
