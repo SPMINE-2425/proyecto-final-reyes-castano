@@ -10,8 +10,7 @@
 
 
 
-Este proyecto implementa **ResNet-101** para clasificar imágenes de **gatos** y **perros**, con un módulo de **interpretabilidad** (Grad-CAM/LayerCAM) que permite visualizar qué zonas de la imagen influyen en la predicción. Este  proyecto está orientado a un **caso de uso de negocio en el sector veterinario** y a la interpretacion de arquitecturas de redes neuronales densas.
-
+Este proyecto implementa **ResNet-101** para clasificar imágenes de **gatos** y **perros**, con un módulo de **interpretabilidad** (Grad-CAM/LayerCAM) que permite visualizar qué zonas de la imagen influyen en la predicción. La propuesta busca aplicarse en un caso de uso de negocio en el **sector veterinario** y, al mismo tiempo, contribuir a la interpretación de arquitecturas de redes neuronales densas.
 ---
 
 ## 🚩 Problema de negocio
